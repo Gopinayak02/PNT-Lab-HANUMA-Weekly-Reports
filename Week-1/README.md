@@ -21,7 +21,7 @@ You can check all Week-1 codes, images, and outputs here:
 
 ---
 
-# 📌 Code Files (Displayed Separately Below)
+# 📌 Code Files
 - `motor_test.ino`
 - `espnow_tx.ino`
 - `espnow_rx.ino`
