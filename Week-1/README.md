@@ -1,13 +1,15 @@
 # Week 1 Outputs
 
-You can check all Week-1 codes, images, and outputs here:
+You can check all Week-1 codes, images, and outputs here:  
 🔗 https://github.com/<Gopinayak02>/PNT-Lab-HANUMA-Weekly-Reports/tree/main/Week-1
 
+---
+
 # Week–1 Report: HANUMA Rover Development  
-Duration:  1 Sept 2025 – 7 Sept 2025  
-Project:   HANUMA – Hazard Analysis & Navigation Unit for Mine Assistance  
-Interns:   B. Venkat Gopi Nayak & M. Bindu Madhavi  
-Guided by: Dr. Shaik Fayaz Ahamed, SAHE  
+**Duration:** 1 Sept 2025 – 7 Sept 2025  
+**Project:** HANUMA – Hazard Analysis & Navigation Unit for Mine Assistance  
+**Interns:** B. Venkat Gopi Nayak & M. Bindu Madhavi  
+**Guided by:** Dr. Shaik Fayaz Ahamed, SAHE  
 
 ---
 
@@ -16,6 +18,15 @@ Guided by: Dr. Shaik Fayaz Ahamed, SAHE
 - Identify all required components, sensors, and control modules.  
 - Test basic rover mobility using L298N motor driver.  
 - Establish ESP-NOW communication between transmitter & receiver modules.
+
+---
+
+# 📌 Code Files (Displayed Separately Below)
+- `motor_test.ino`
+- `espnow_tx.ino`
+- `espnow_rx.ino`
+
+---
 
 ## **motor_test.ino**
 ```cpp
@@ -47,54 +58,5 @@ void loop() {
   digitalWrite(in4, HIGH);
   delay(2000);
 }
-🔹 espnow_tx.ino
-// ESP-NOW Transmitter (basic test)
-#include <esp_now.h>
-#include <WiFi.h>
 
-uint8_t broadcastAddress[] = {0xFF,0xFF,0xFF,0xFF,0xFF,0xFF};
-
-typedef struct struct_message {
-  int command;
-} struct_message;
-
-struct_message testData;
-
-void setup() {
-  WiFi.mode(WIFI_STA);
-  esp_now_init();
-  esp_now_add_peer(broadcastAddress, ESP_NOW_ROLE_CONTROLLER, 1, NULL, 0);
-}
-
-void loop() {
-  testData.command = 1; // forward
-  esp_now_send(broadcastAddress, (uint8_t *) &testData, sizeof(testData));
-  delay(500);
-}
-
-🔹 espnow_rx.ino
-// ESP-NOW Receiver (basic test)
-#include <esp_now.h>
-#include <WiFi.h>
-
-typedef struct struct_message {
-  int command;
-} struct_message;
-
-struct_message incomingData;
-
-void OnDataRecv(const uint8_t * mac, const uint8_t *incomingDataBuffer, int len) {
-  memcpy(&incomingData, incomingDataBuffer, sizeof(incomingData));
-  Serial.print("Received Command: ");
-  Serial.println(incomingData.command);
-}
-
-void setup() {
-  Serial.begin(115200);
-  WiFi.mode(WIFI_STA);
-  esp_now_init();
-  esp_now_register_recv_cb(OnDataRecv);
-}
-
-void loop() {}
 
