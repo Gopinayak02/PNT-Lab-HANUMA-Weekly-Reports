@@ -48,7 +48,7 @@ void loop() {
   delay(2000);
 }
 
-🔹 espnow_rx.ino
+##🔹 espnow_rx.ino
 // ESP-NOW Receiver (basic test)
 #include <esp_now.h>
 #include <WiFi.h>
@@ -74,7 +74,7 @@ void setup() {
 
 void loop() {}
 
-ESP32 – Get MAC Address (Receiver)
+##ESP32 – Get MAC Address (Receiver)
 cpp
 #include <WiFi.h>
 
@@ -97,7 +97,7 @@ RESULT YOU WILL SEE IN SERIAL MONITOR
 css
 //example ESP32 Receiver MAC Address: 7C:DF:A1:45:9B:22
 
-🔹 espnow_tx.ino
+##🔹 espnow_tx.ino
 cpp
 // ESP-NOW Transmitter (basic test)
 #include <esp_now.h>
