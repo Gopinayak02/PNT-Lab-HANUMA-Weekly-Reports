@@ -48,7 +48,7 @@ void loop() {
   delay(2000);
 }
 
-##🔹 espnow_rx.ino
+##🔹 **espnow_rx.ino** 
 // ESP-NOW Receiver (basic test)
 #include <esp_now.h>
 #include <WiFi.h>
@@ -74,7 +74,7 @@ void setup() {
 
 void loop() {}
 
-##ESP32 – Get MAC Address (Receiver)
+## **ESP32 – Get MAC Address (Receiver)**
 cpp
 #include <WiFi.h>
 
